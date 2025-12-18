@@ -1,0 +1,14 @@
+{
+  "name": "playwright-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Sergei Nikifirov",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {},
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.3"
+  }
+}
