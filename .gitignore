@@ -6,3 +6,10 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+/logs
+/debug
+.env
+allure-results
+tests-examples/
+example.*
+*.log

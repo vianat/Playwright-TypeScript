@@ -1,18 +1,13 @@
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test('has title', async ({page}) => {
+  await page.goto('https://katalon-demo-cura.herokuapp.com');
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
+  await expect(page).toHaveTitle("CURA Healthcare Service");
+
+  await expect(page.locator("//h1")).toHaveText("CURA Healthcare Service");
 });
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test('get started', {tag: "@smoke"}, async ({page}, testInfo) => {
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
-
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
