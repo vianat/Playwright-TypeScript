@@ -9,6 +9,9 @@
   "scripts": {
     "login": "npx playwright test tests/functional/login.spec.ts",
     "make-apt": "npx playwright test tests/demo/makeAppointment.spec.ts",
+    "make-apt:debugCLI": "PWDEBUG=1 npx playwright test tests/demo/makeAppointment.spec.ts",
+    "make-apt:debugUI": "npx playwright test tests/demo/makeAppointment.spec.ts --ui",
+    "make-apt:trace": "npx playwright test tests/demo/makeAppointment.spec.ts --trace on",
     "inventory": "npx playwright test tests/functional/inventory.spec.ts"
   },
   "devDependencies": {
