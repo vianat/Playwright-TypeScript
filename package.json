@@ -7,7 +7,8 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "login": "npx playwright test tests/functional/login.spec.ts"
+    "login": "npx playwright test tests/functional/login.spec.ts",
+    "make-apt": "npx playwright test tests/demo/makeAppointment.spec.ts"
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0",
