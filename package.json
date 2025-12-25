@@ -8,6 +8,8 @@
   "main": "index.js",
   "scripts": {
     "login": "npx playwright test tests/functional/login.spec.ts",
+    "test:smoke": "npx playwright test --grep @smoke",
+    "test:regression": "npx playwright test --grep @regression",
     "make-apt": "npx playwright test tests/demo/makeAppointment.spec.ts",
     "make-apt:debugCLI": "PWDEBUG=1 npx playwright test tests/demo/makeAppointment.spec.ts",
     "make-apt:debugUI": "npx playwright test tests/demo/makeAppointment.spec.ts --ui",
@@ -17,6 +19,7 @@
   "devDependencies": {
     "@playwright/test": "^1.57.0",
     "@types/node": "^25.0.3",
-    "allure-playwright": "^3.4.3"
+    "allure-playwright": "^3.4.3",
+    "dotenv": "^17.2.3"
   }
 }

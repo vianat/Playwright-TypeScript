@@ -16,7 +16,11 @@ test.describe("Make appointment", () => {
         await expect(page.locator("h2")).toContainText("Make Appointment");
     })
 
-    test('Make appointment with non-default values', async ({ page }) => {
+    test('Make appointment with non-default values', {annotation: {type: "Bug", description: "JIRA#234"}},  async ({ page , browserName }) => {
+
+        // skip this test for firefox
+        test.skip(browserName === "firefox", "open bug id : 1234");
+
         await page.getByLabel('Facility').selectOption('Seoul CURA Healthcare Center');
         await page.getByText('Apply for hospital readmission').click();
         await page.getByText('Medicaid').click();

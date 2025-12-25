@@ -1,6 +1,10 @@
 import { defineConfig, devices } from '@playwright/test';
 import * as os from "node:os";
 
+import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({ path: path.resolve(__dirname, '.env') });
+
 export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -11,6 +15,9 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
+  // my setup
+  globalSetup: require.resolve('./tests/helpers/global-setup.ts'),
+  globalTeardown: require.resolve('./tests/helpers/global-teardown.ts'),
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
       ["html", {
@@ -34,6 +41,7 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('')`. */
     baseURL: 'https://katalon-demo-cura.herokuapp.com',
     screenshot: "on",
+    video: "retain-on-failure",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -56,10 +64,10 @@ export default defineConfig({
     },
 
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
     //
     // {
     //   name: 'webkit',
