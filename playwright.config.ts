@@ -17,7 +17,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   // my setup
-  globalSetup: require.resolve('./tests/helpers/global-setup.ts'),
+  globalSetup:    require.resolve('./tests/helpers/global-setup.ts'),
   globalTeardown: require.resolve('./tests/helpers/global-teardown.ts'),
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [

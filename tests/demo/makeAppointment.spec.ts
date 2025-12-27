@@ -18,10 +18,17 @@ for (const appData of data) {
             await page.getByLabel("Password").fill("ThisIsNotAPassword")
             await page.getByRole("button", {name: "Login"}).click();
 
+            // get login cookies
+            const loginCookies = await page.context().cookies();
+            process.env.LOGIN_COOKIES = JSON.stringify(loginCookies);
+
             await expect(page.locator("h2")).toContainText("Make Appointment");
         })
 
         test(`${appData.testId}: Make appointment with non-default values`, {annotation: {type: "Bug", description: "JIRA#234"}},  async ({ page , browserName }) => {
+
+            // access the login cookies
+            console.log(process.env.LOGIN_COOKIES);
 
             // skip this test for firefox
             test.skip(browserName === "firefox", "open bug id : 1234");
